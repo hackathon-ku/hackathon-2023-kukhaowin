@@ -16,7 +16,7 @@ class Command(BaseCommand):
         seeder.add_entity(User, kwargs['total'],  {'username': lambda x: seeder.faker.user_name(),
                                                    'fullname': lambda x: seeder.faker.name(),
                                                    'email': lambda x: seeder.faker.email(),
-                                                   'profile': lambda x: seeder.faker.url(),
+                                                   'profile': lambda x: seeder.faker.image_url(),
                                                    'password': lambda x: make_password("password"),
                                                    'student_id': lambda x: seeder.faker.random_number(digits=8),
                                                    'phone': lambda x: seeder.faker.phone_number(),

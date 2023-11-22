@@ -21,4 +21,5 @@ urlpatterns = [
     # path("admin/", admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/user/', include('User.urls')),
+    path('api/kuconnect/', include('KUConnect.urls')),
 ]

@@ -3,6 +3,7 @@ import uuid
 # Create your models here.
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import UserManager
+from KUConnect.models import Event
 
 
 class UserProfilesManager(UserManager):
@@ -54,6 +55,11 @@ class UserProfiles(AbstractBaseUser):
     advisor = models.CharField(max_length=255, blank=True, null=True)
     birth_date = models.DateField(blank=True, null=True)
     culture = models.CharField(max_length=255, blank=True, null=True)
+    activity_total = models.IntegerField(default=0)
+    events = models.ManyToManyField(
+        Event, blank=True, through='KUConnect.EventJoin')
+    favorites_events = models.ManyToManyField(
+        Event, blank=True, related_name="favorites_userprofiles")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
