@@ -31,16 +31,17 @@ const NisitCard = ({
       <div className="flex justify-center">
         <Image src={`/images/nisit.svg`} width={100} height={100} />
       </div>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between ml-4">
         <div>
-          <Text type="header">{nisitId}</Text>
+          <Text type="subHeader">{nisitId}</Text>
           <Text type="subHeader">{nisitName}</Text>
-          <Text type="body">{nisitFaculty}</Text>
-          <Text type="body">{nisitMajor}</Text>
+          <Text type="caption">{nisitFaculty}</Text>
+          <Text type="caption">{nisitMajor}</Text>
         </div>
         <div className="flex ">
-          <Text type="body">อาจารย์ที่ปรึกษา</Text>
-          <Text type="body">{nisitAdvisor}</Text>
+          <Text type="caption" fontWeight={600}>อาจารย์ที่ปรึกษา </Text>
+          <span className="ml-1"></span>
+          <Text type="caption">{nisitAdvisor}</Text>
         </div>
       </div>
     </Container>

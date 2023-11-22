@@ -3,15 +3,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Text = ({ type, fontSize, fontWeight, color, children }) => {
+const Text = ({ type, fontSize, fontWeight, color, children, className ,style}) => {
   const textStyle = {
     ..._renderStyle(type),
     fontFamily: "sans-serif",
     color,
-    margin: 0,
+    ...style,
   };
 
-  return <p style={textStyle}>{children}</p>;
+  return (
+    <p className={className} style={textStyle}>
+      {children}
+    </p>
+  );
 };
 
 Text.propTypes = {
@@ -20,6 +24,7 @@ Text.propTypes = {
   fontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   color: PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 Text.defaultProps = {
@@ -32,12 +37,12 @@ function _renderStyle(type) {
   switch (type) {
     case "header":
       return {
-        fontSize: "18px",
-        fontWeight: 700,
+        fontSize: fontSize || "18px",
+        fontWeight: fontWeight || 700,
       };
     case "subHeader":
       return {
-        fontSize: "16px",
+        fontSize: fontSize || "16px",
         fontWeight: 700,
       };
     case "body":
