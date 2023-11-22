@@ -22,4 +22,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/user/', include('User.urls')),
     path('api/kuconnect/', include('KUConnect.urls')),
+    path('api/kupartime/', include('KUPartime.urls')),
 ]
