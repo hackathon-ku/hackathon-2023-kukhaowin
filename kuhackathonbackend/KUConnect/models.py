@@ -64,3 +64,13 @@ class EventJoin(models.Model):
     user = models.ForeignKey('User.UserProfiles', on_delete=models.CASCADE)
     status = models.CharField(
         max_length=100, choices=STATUS_IN_CHOICES, default='Pending')
+
+
+class EventPost(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey('User.UserProfiles', on_delete=models.CASCADE)
+    content = models.TextField()
+    date_post = models.DateField(auto_now_add=True)
+    like = models.IntegerField(default=0)
+    comment = models.IntegerField(default=0)
+    share = models.IntegerField(default=0)

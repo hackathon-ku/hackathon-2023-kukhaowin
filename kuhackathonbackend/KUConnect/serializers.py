@@ -63,3 +63,9 @@ class EventSerializer(serializers.ModelSerializer):
     #             def get_is_favorite(self, event):
     #                 user = self.context['request'].user
     #                 return event in user.favorites_events.all()
+
+
+class EventPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventPost
+        fields = '__all__'

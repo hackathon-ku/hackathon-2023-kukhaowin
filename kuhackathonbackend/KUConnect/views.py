@@ -114,3 +114,30 @@ class EventJoinAPI(APIView):
                 "event": serializers.data,
                 "message": "Event Details.",
             })
+
+
+class EventPostAPI(APIView):
+    serializer_class = EventPostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        event = Event.objects.get(pk=pk)
+        event_post = EventPost.objects.filter(event=event)
+        serializer = self.serializer_class(event_post, many=True)
+
+        return Response(
+            status=status.HTTP_200_OK,
+            data={
+                "event_post": serializer.data,
+                "message": "Event Post Details.",
+            })
+
+    def post(self, request, pk):
+        event = Event.objects.get(pk=pk)
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(event=event, user=request.user)
+
+        return Response(
+            status=status.HTTP_201_CREATED,
+            data={"message": "Successfully Registered."})

@@ -8,6 +8,7 @@ urlpatterns = [
          EventCategoryAPI.as_view(), name='event_categories'),
     path('event/favourite/', FavoriteEventAPI.as_view(), name='event_favourite'),
     path('event/join/', EventJoinAPI.as_view(), name='event_join'),
+    path('event/post/<int:pk>/', EventPostAPI.as_view(), name='event_post'),
 
 
 ]
