@@ -8,5 +8,6 @@ urlpatterns = [
     path('post/',  PartTimeAPI.as_view(), name='partime_post'),
     path('post/<int:id>/', PartTimeDetailAPI.as_view(),
          name='partime_post_detail'),
+    path('profile/', ProfileAPI.as_view(), name='profile'),
 
 ]

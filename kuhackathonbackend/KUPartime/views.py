@@ -67,3 +67,18 @@ class PartTimeDetailAPI(APIView):
                 "message": "Successfully deleted partime post."
             }
         )
+
+
+class ProfileAPI(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = PartimeProfileSerializer
+
+    def get(self, request):
+        serializer = self.serializer_class(request.user)
+
+        return Response(
+            status=status.HTTP_200_OK,
+            data={
+                "user": serializer.data,
+                "message": "User Details.",
+            })
