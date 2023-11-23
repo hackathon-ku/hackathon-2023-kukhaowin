@@ -17,3 +17,17 @@ class PartimePost(models.Model):
 
     def __str__(self):
         return self
+
+
+class ProfilesPartime(models.Model):
+    id = models.AutoField(primary_key=True)
+    hours_work = models.IntegerField()
+    inspiration = models.TextField()
+    spacial_skill = models.TextField()
+    user = models.OneToOneField(
+        'User.UserProfiles', on_delete=models.SET_NULL, null=True, blank=True)
+    parttime_history = models.ManyToManyField(
+        PartimePost, blank=True, related_name="parttime_history")
+
+    def __str__(self):
+        return self

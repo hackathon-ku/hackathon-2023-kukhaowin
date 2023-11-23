@@ -51,11 +51,11 @@ class Command(BaseCommand):
         })
 
         # Add random events to users
-        users = User.objects.all()
-        events = Event.objects.all()
+        # users = User.objects.all()
+        # events = Event.objects.all()
 
-        for user in users:
-            num_events = random.randint(1, len(events))
-            user.favorites_events.add(*random.sample(list(events), num_events))
+        # for user in users:
+        #     num_events = random.randint(1, len(events))
+        #     user.favorites_events.add(*random.sample(list(events), num_events))
 
         seeder.execute()
