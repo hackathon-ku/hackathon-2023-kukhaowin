@@ -15,8 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='KUHackathon API')
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    # path("admin/", admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/user/', include('User.urls')),
+    path('api/kuconnect/', include('KUConnect.urls')),
+    path('api/kupartime/', include('KUPartime.urls')),
+    path('docs/', schema_view),
 ]
