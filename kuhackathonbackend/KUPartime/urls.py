@@ -9,5 +9,7 @@ urlpatterns = [
     path('post/<int:id>/', PartTimeDetailAPI.as_view(),
          name='partime_post_detail'),
     path('profile/', ProfileAPI.as_view(), name='profile'),
+    path('profile/history/', PartimeProfileHistoryAPI.as_view(),
+         name='profile_history'),
 
 ]

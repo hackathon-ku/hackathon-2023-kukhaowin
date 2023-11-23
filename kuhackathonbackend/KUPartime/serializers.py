@@ -11,12 +11,20 @@ class PartimePostSerializer(serializers.ModelSerializer):
 
 
 class PartimeProfileSerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField('get_user')
+    # user = serializers.SerializerMethodField('get_user')
 
-    def get_user(self, obj):
-        return obj.user
+    # def get_user(self, obj):
+    #     return obj.user
 
     class Meta:
         model = ProfilesPartime
+        fields = '__all__'
+
+        read_only_fields = ['id']
+
+
+class PartimeProfileHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PartimeProfileHistory
         fields = '__all__'
         read_only_fields = ['id']

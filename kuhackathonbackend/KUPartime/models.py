@@ -26,8 +26,22 @@ class ProfilesPartime(models.Model):
     spacial_skill = models.TextField()
     user = models.OneToOneField(
         'User.UserProfiles', on_delete=models.SET_NULL, null=True, blank=True)
-    parttime_history = models.ManyToManyField(
-        PartimePost, blank=True, related_name="parttime_history")
+
+    def __str__(self):
+        return self
+
+
+class PartimeProfileHistory(models.Model):
+    id = models.AutoField(primary_key=True)
+    parttime = models.ForeignKey(PartimePost, on_delete=models.CASCADE)
+    profile = models.ForeignKey(ProfilesPartime, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=[
+        ('success', 'Success'),
+        ('working', 'Working'),
+        ('pending', 'Pending'),
+        ('reject', 'Reject')
+    ], default='pending')
 
     def __str__(self):
         return self
