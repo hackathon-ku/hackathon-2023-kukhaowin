@@ -1,19 +1,22 @@
-'use client'
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
-const StyledPaper = styled.div`
-  width: ${({ width }) => width || "100%"};
-  padding: ${({ padding }) => padding || "16px"};
-  border-radius: ${({ borderRadius }) => borderRadius || "8px"};
-  background-color: ${({ backgroundColor }) => backgroundColor || "#ffffff"};
-  box-shadow: ${({ boxShadow }) =>
-    boxShadow || "0px 0px 10px rgba(0, 0, 0, 0.1)"};
-`;
+const Paper = ({
+  children,
+  width ,
+  padding ,
+  borderRadius ,
+  backgroundColor ,
+  boxShadow ,
+  ...restProps
+}) => {
+  const containerClasses = `w-${width} p-${padding} rounded-${borderRadius} bg-${backgroundColor} ${boxShadow}`;
 
-const Paper = ({ children, ...restProps }) => {
-  return <StyledPaper {...restProps}>{children}</StyledPaper>;
+  return (
+    <div className={containerClasses} {...restProps}>
+      {children}
+    </div>
+  );
 };
 
 Paper.propTypes = {
@@ -23,6 +26,14 @@ Paper.propTypes = {
   borderRadius: PropTypes.string,
   backgroundColor: PropTypes.string,
   boxShadow: PropTypes.string,
+};
+
+Paper.defaultProps = {
+  width: "full",
+  padding: "4",
+  borderRadius: "md",
+  backgroundColor: "white",
+  boxShadow: "shadow-md",
 };
 
 export default Paper;

@@ -1,26 +1,20 @@
-import Image from 'next/image'
+'use client'
 
-import NisitCard from '@/components/NisitCard/NisitCard'
-import Paper from '@/components/Paper/Paper'
-import MenuItem from '@/components/MenuItem/MenuItem'
+import React from 'react'
+import {useRouter} from 'next/navigation'
+
 
 export default function Home() {
+  const router = useRouter()
+  React.useEffect(() => {
+    router.push('/login')
+ 
+  }, [])
+  
+
   return (
     <div>
-      <NisitCard
-        nisitId="61130500221"
-        nisitName="นาย ธนพล แก้วมณี"
-        nisitFaculty="วิศวกรรมศาสตร์"
-        nisitMajor="วิศวกรรมคอมพิวเตอร์"
-        nisitAdvisor="ผศ.ดร. สุธีรา ภู่เจริญ"
-         />
-      <Paper
-       />
-      <MenuItem 
-        menuName="ข้อมูลส่วนตัว"
-        menuIcon="/images/nisit.svg"
-        menuLink="/profile"
-        />
+ 
     </div>
   )
 }
